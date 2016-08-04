@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AlertingRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Rules>
+    <!--
+      The value of state column:
+        public enum JobState
+        {
+            None = 0,
+            Queued = 1,
+            Running = 2,
+            Completed = 3,
+            CompletedSuccess = 4,
+            CompletedFailure = 5,
+            Cancelled = 6,
+            Interrupted = 7,
+        }
+    -->
+    <AlertingRule>
+      <SqlQuery>Select Id, PNSeconds, TrueUserName from dbo.JobStatistics 
+where PNSeconds &gt; 3600*1000 and (State = 5 or State = 6)
+order by TrueUserName ASC, State ASC, PNSeconds DESC</SqlQuery>
+      <MailBody>These jobs was cancelled or failed after had used large number of PN hours (1000), please ensure they were approved by the Technical Review Board. If a job had been approved by TRB and it failed often, please review it again and find out solution.</MailBody>
+      <ShouldFilterJobName>false</ShouldFilterJobName>
+    </AlertingRule>    
+    <AlertingRule>
+      <SqlQuery>Select Id, PNSeconds, TrueUserName from dbo.JobStatistics 
+where PNSeconds &gt; 3600*1000 and (State != 5 and State != 6)
+order by TrueUserName ASC, State ASC, PNSeconds DESC </SqlQuery>
+      <MailBody>These jobs have used large number of PN hours (1000), so they need to be approved by the Technical Review Board.</MailBody>
+      <ShouldFilterJobName>true</ShouldFilterJobName>
+    </AlertingRule>
+  </Rules>
+  <MailSettings>
+    <ExchangeServerUrl>https://outlook.office365.com/EWS/Exchange.asmx</ExchangeServerUrl>
+    <ExchangeUserName>zhxiao@microsoft.com</ExchangeUserName>
+    <ExchangeUserPassword></ExchangeUserPassword>
+    <AutoDiscoverUrl>true</AutoDiscoverUrl>
+    <From>zhxiao@microsoft.com</From>
+    <ToSuffix>@microsoft.com</ToSuffix>
+    <CarbonCopy>
+      <string>zhxiao@microsoft.com</string>
+      <string>nzengdir@microsoft.com</string>
+      <!--
+      <string>techreviewboard@microsoft.com</string>
+      -->
+    </CarbonCopy>
+  </MailSettings>
+  <JobNameFilters>
+    <string>_APPROVED_BY_TRB</string>
+  </JobNameFilters>
+  <LookbackDays>3</LookbackDays>
+</AlertingRules>

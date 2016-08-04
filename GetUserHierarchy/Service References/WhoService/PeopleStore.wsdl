@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://who/" xmlns:s1="http://schemas.microsoft.com/Search/2008/suggestions" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://who/AbstractTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://who/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://who/">
+      <s:import namespace="http://schemas.microsoft.com/Search/2008/suggestions" />
+      <s:element name="FindPeopleByQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPeopleByQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPeopleByQueryResult" type="tns:ArrayOfPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPerson">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Person">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PositionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestionId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManagerPositionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovedInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpenPositionSubGroupCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPartOfOrgTree" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SamAccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Office" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrgDepth" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FullTimeReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VendorReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerEmployeeId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpenPositionVendor" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpenPositionIntern" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerFullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgencyTempReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VendorWorkerReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessGuestReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InternReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="JointVentureReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpenEmployeeReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpenInternReports" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageLink" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonLink" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationLink" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindPeopleByFuzzy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fuzzy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPeopleByFuzzyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPeopleByFuzzyResult" type="tns:ArrayOfPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPersonByAlias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="alias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPersonByAliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPersonByAliasResult" type="tns:Person" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPeopleByAlias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aliases" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindPeopleByAliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPeopleByAliasResult" type="tns:ArrayOfPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPeopleByEmployeeId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="employeeIds" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindPeopleByEmployeeIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPeopleByEmployeeIdResult" type="tns:ArrayOfPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPersonContextWithPeers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="alias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPersonContextWithPeersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPersonContextWithPeersResult" type="tns:PersonContextWithPeers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PersonContextWithPeers">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PersonContext">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Peers" type="tns:ArrayOfDirectData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonContext">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Person" type="tns:Person" />
+          <s:element minOccurs="0" maxOccurs="1" name="Managers" type="tns:ArrayOfPerson" />
+          <s:element minOccurs="0" maxOccurs="1" name="DirectsChains" type="tns:ArrayOfDirectsChain" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDirectsChain">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DirectsChain" nillable="true" type="tns:DirectsChain" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DirectsChain">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Manager" type="tns:DirectData" />
+          <s:element minOccurs="0" maxOccurs="1" name="Directs" type="tns:ArrayOfDirectData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DirectData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Office" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vendor" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalReports" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalOpenReports" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NestedSetLeft" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NestedSetRight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TreeDepth" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequisitionAlias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FullTimeReports" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgencyTemp" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="VendorWorker" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessGuest" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Intern" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="JointVentureEmp" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptNickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Keywords" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnedDLs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TagsList" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PMRollupCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DevRollupCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TestRollupCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OtherRollupCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenPosition" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovedInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageLink" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonLink" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationLink" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDirectData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DirectData" nillable="true" type="tns:DirectData" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindPersonContextByAlias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="alias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPersonContextByAliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPersonContextByAliasResult" type="tns:PersonContext" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTagCompletions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTagCompletionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTagCompletionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="alias" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnderResult" type="tns:ArrayOfPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchCompletions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchCompletionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchCompletionsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchCompletionsByAlias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchCompletionsByAliasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchCompletionsByAliasResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchAddinCompletions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchAddinCompletionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:GetSearchAddinCompletionsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfPerson" nillable="true" type="tns:ArrayOfPerson" />
+      <s:element name="Person" nillable="true" type="tns:Person" />
+      <s:element name="PersonContextWithPeers" nillable="true" type="tns:PersonContextWithPeers" />
+      <s:element name="PersonContext" nillable="true" type="tns:PersonContext" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Search/2008/suggestions">
+      <s:element name="GetSearchAddinCompletionsResult" nillable="true" type="s1:SearchSuggestion" />
+      <s:complexType name="SearchSuggestion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Query" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Section" type="s1:ArrayOfItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="s1:Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Item">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s1:Image" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Image">
+        <s:attribute name="source" type="s:string" />
+        <s:attribute name="width" type="s:string" />
+        <s:attribute name="height" type="s:string" />
+        <s:attribute name="align" type="s:string" />
+      </s:complexType>
+      <s:element name="SearchSuggestion" nillable="true" type="s1:SearchSuggestion" />
+    </s:schema>
+    <s:schema targetNamespace="http://who/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindPeopleByQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:FindPeopleByQuery" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:FindPeopleByQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByFuzzySoapIn">
+    <wsdl:part name="parameters" element="tns:FindPeopleByFuzzy" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByFuzzySoapOut">
+    <wsdl:part name="parameters" element="tns:FindPeopleByFuzzyResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonByAliasSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPersonByAlias" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonByAliasSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPersonByAliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByAliasSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPeopleByAlias" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByAliasSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPeopleByAliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByEmployeeIdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPeopleByEmployeeId" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByEmployeeIdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPeopleByEmployeeIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextWithPeersSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPersonContextWithPeers" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextWithPeersSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPersonContextWithPeersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextByAliasSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPersonContextByAlias" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextByAliasSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPersonContextByAliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTagCompletionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTagCompletions" />
+  </wsdl:message>
+  <wsdl:message name="GetTagCompletionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTagCompletionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnder" />
+  </wsdl:message>
+  <wsdl:message name="GetUnderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchCompletions" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchCompletionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsByAliasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchCompletionsByAlias" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsByAliasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchCompletionsByAliasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchAddinCompletionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchAddinCompletions" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchAddinCompletionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchAddinCompletionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByQueryHttpGetIn">
+    <wsdl:part name="query" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByQueryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByFuzzyHttpGetIn">
+    <wsdl:part name="fuzzy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByFuzzyHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonByAliasHttpGetIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonByAliasHttpGetOut">
+    <wsdl:part name="Body" element="tns:Person" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByAliasHttpGetIn">
+    <wsdl:part name="aliases" type="s2:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByAliasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByEmployeeIdHttpGetIn">
+    <wsdl:part name="employeeIds" type="s2:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByEmployeeIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextWithPeersHttpGetIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextWithPeersHttpGetOut">
+    <wsdl:part name="Body" element="tns:PersonContextWithPeers" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextByAliasHttpGetIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextByAliasHttpGetOut">
+    <wsdl:part name="Body" element="tns:PersonContext" />
+  </wsdl:message>
+  <wsdl:message name="GetTagCompletionsHttpGetIn">
+    <wsdl:part name="prefixText" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTagCompletionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetUnderHttpGetIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnderHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsHttpGetIn">
+    <wsdl:part name="prefixText" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsByAliasHttpGetIn">
+    <wsdl:part name="prefixText" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsByAliasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchAddinCompletionsHttpGetIn">
+    <wsdl:part name="prefixText" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchAddinCompletionsHttpGetOut">
+    <wsdl:part name="Body" element="s1:SearchSuggestion" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByQueryHttpPostIn">
+    <wsdl:part name="query" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByQueryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByFuzzyHttpPostIn">
+    <wsdl:part name="fuzzy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByFuzzyHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonByAliasHttpPostIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonByAliasHttpPostOut">
+    <wsdl:part name="Body" element="tns:Person" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByAliasHttpPostIn">
+    <wsdl:part name="aliases" type="s2:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByAliasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByEmployeeIdHttpPostIn">
+    <wsdl:part name="employeeIds" type="s2:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="FindPeopleByEmployeeIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextWithPeersHttpPostIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextWithPeersHttpPostOut">
+    <wsdl:part name="Body" element="tns:PersonContextWithPeers" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextByAliasHttpPostIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FindPersonContextByAliasHttpPostOut">
+    <wsdl:part name="Body" element="tns:PersonContext" />
+  </wsdl:message>
+  <wsdl:message name="GetTagCompletionsHttpPostIn">
+    <wsdl:part name="prefixText" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTagCompletionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetUnderHttpPostIn">
+    <wsdl:part name="alias" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnderHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPerson" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsHttpPostIn">
+    <wsdl:part name="prefixText" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsByAliasHttpPostIn">
+    <wsdl:part name="prefixText" type="s:string" />
+    <wsdl:part name="count" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCompletionsByAliasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchAddinCompletionsHttpPostIn">
+    <wsdl:part name="prefixText" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchAddinCompletionsHttpPostOut">
+    <wsdl:part name="Body" element="s1:SearchSuggestion" />
+  </wsdl:message>
+  <wsdl:portType name="PeopleStoreSoap">
+    <wsdl:operation name="FindPeopleByQuery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Runs same search as the web search box; supports full Search Syntax. Count is the number of people to return (max 500); more may exists, order is employee ID. Do not abuse via automation!</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByQuerySoapIn" />
+      <wsdl:output message="tns:FindPeopleByQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <wsdl:input message="tns:FindPeopleByFuzzySoapIn" />
+      <wsdl:output message="tns:FindPeopleByFuzzySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <wsdl:input message="tns:FindPersonByAliasSoapIn" />
+      <wsdl:output message="tns:FindPersonByAliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">no guarantees that the order of arrays are the same</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByAliasSoapIn" />
+      <wsdl:output message="tns:FindPeopleByAliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">no guarantees that the order of arrays are the same</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByEmployeeIdSoapIn" />
+      <wsdl:output message="tns:FindPeopleByEmployeeIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person, their management chain, their directs, and their peers (including the person who was requested)</wsdl:documentation>
+      <wsdl:input message="tns:FindPersonContextWithPeersSoapIn" />
+      <wsdl:output message="tns:FindPersonContextWithPeersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person, their management chain, and their directs</wsdl:documentation>
+      <wsdl:input message="tns:FindPersonContextByAliasSoapIn" />
+      <wsdl:output message="tns:FindPersonContextByAliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <wsdl:input message="tns:GetTagCompletionsSoapIn" />
+      <wsdl:output message="tns:GetTagCompletionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person and everyone who reports under them in an unspecified order</wsdl:documentation>
+      <wsdl:input message="tns:GetUnderSoapIn" />
+      <wsdl:output message="tns:GetUnderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <wsdl:input message="tns:GetSearchCompletionsSoapIn" />
+      <wsdl:output message="tns:GetSearchCompletionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <wsdl:input message="tns:GetSearchCompletionsByAliasSoapIn" />
+      <wsdl:output message="tns:GetSearchCompletionsByAliasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <wsdl:input message="tns:GetSearchAddinCompletionsSoapIn" />
+      <wsdl:output message="tns:GetSearchAddinCompletionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PeopleStoreHttpGet">
+    <wsdl:operation name="FindPeopleByQuery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Runs same search as the web search box; supports full Search Syntax. Count is the number of people to return (max 500); more may exists, order is employee ID. Do not abuse via automation!</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByQueryHttpGetIn" />
+      <wsdl:output message="tns:FindPeopleByQueryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <wsdl:input message="tns:FindPeopleByFuzzyHttpGetIn" />
+      <wsdl:output message="tns:FindPeopleByFuzzyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <wsdl:input message="tns:FindPersonByAliasHttpGetIn" />
+      <wsdl:output message="tns:FindPersonByAliasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">no guarantees that the order of arrays are the same</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByAliasHttpGetIn" />
+      <wsdl:output message="tns:FindPeopleByAliasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">no guarantees that the order of arrays are the same</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByEmployeeIdHttpGetIn" />
+      <wsdl:output message="tns:FindPeopleByEmployeeIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person, their management chain, their directs, and their peers (including the person who was requested)</wsdl:documentation>
+      <wsdl:input message="tns:FindPersonContextWithPeersHttpGetIn" />
+      <wsdl:output message="tns:FindPersonContextWithPeersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person, their management chain, and their directs</wsdl:documentation>
+      <wsdl:input message="tns:FindPersonContextByAliasHttpGetIn" />
+      <wsdl:output message="tns:FindPersonContextByAliasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <wsdl:input message="tns:GetTagCompletionsHttpGetIn" />
+      <wsdl:output message="tns:GetTagCompletionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person and everyone who reports under them in an unspecified order</wsdl:documentation>
+      <wsdl:input message="tns:GetUnderHttpGetIn" />
+      <wsdl:output message="tns:GetUnderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <wsdl:input message="tns:GetSearchCompletionsHttpGetIn" />
+      <wsdl:output message="tns:GetSearchCompletionsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <wsdl:input message="tns:GetSearchCompletionsByAliasHttpGetIn" />
+      <wsdl:output message="tns:GetSearchCompletionsByAliasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <wsdl:input message="tns:GetSearchAddinCompletionsHttpGetIn" />
+      <wsdl:output message="tns:GetSearchAddinCompletionsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PeopleStoreHttpPost">
+    <wsdl:operation name="FindPeopleByQuery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Runs same search as the web search box; supports full Search Syntax. Count is the number of people to return (max 500); more may exists, order is employee ID. Do not abuse via automation!</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByQueryHttpPostIn" />
+      <wsdl:output message="tns:FindPeopleByQueryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <wsdl:input message="tns:FindPeopleByFuzzyHttpPostIn" />
+      <wsdl:output message="tns:FindPeopleByFuzzyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <wsdl:input message="tns:FindPersonByAliasHttpPostIn" />
+      <wsdl:output message="tns:FindPersonByAliasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">no guarantees that the order of arrays are the same</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByAliasHttpPostIn" />
+      <wsdl:output message="tns:FindPeopleByAliasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">no guarantees that the order of arrays are the same</wsdl:documentation>
+      <wsdl:input message="tns:FindPeopleByEmployeeIdHttpPostIn" />
+      <wsdl:output message="tns:FindPeopleByEmployeeIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person, their management chain, their directs, and their peers (including the person who was requested)</wsdl:documentation>
+      <wsdl:input message="tns:FindPersonContextWithPeersHttpPostIn" />
+      <wsdl:output message="tns:FindPersonContextWithPeersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person, their management chain, and their directs</wsdl:documentation>
+      <wsdl:input message="tns:FindPersonContextByAliasHttpPostIn" />
+      <wsdl:output message="tns:FindPersonContextByAliasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <wsdl:input message="tns:GetTagCompletionsHttpPostIn" />
+      <wsdl:output message="tns:GetTagCompletionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">returns the person and everyone who reports under them in an unspecified order</wsdl:documentation>
+      <wsdl:input message="tns:GetUnderHttpPostIn" />
+      <wsdl:output message="tns:GetUnderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <wsdl:input message="tns:GetSearchCompletionsHttpPostIn" />
+      <wsdl:output message="tns:GetSearchCompletionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <wsdl:input message="tns:GetSearchCompletionsByAliasHttpPostIn" />
+      <wsdl:output message="tns:GetSearchCompletionsByAliasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <wsdl:input message="tns:GetSearchAddinCompletionsHttpPostIn" />
+      <wsdl:output message="tns:GetSearchAddinCompletionsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PeopleStoreSoap" type="tns:PeopleStoreSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindPeopleByQuery">
+      <soap:operation soapAction="http://who/FindPeopleByQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <soap:operation soapAction="http://who/FindPeopleByFuzzy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <soap:operation soapAction="http://who/FindPersonByAlias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <soap:operation soapAction="http://who/FindPeopleByAlias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <soap:operation soapAction="http://who/FindPeopleByEmployeeId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <soap:operation soapAction="http://who/FindPersonContextWithPeers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <soap:operation soapAction="http://who/FindPersonContextByAlias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <soap:operation soapAction="http://who/GetTagCompletions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <soap:operation soapAction="http://who/GetUnder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <soap:operation soapAction="http://who/GetSearchCompletions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <soap:operation soapAction="http://who/GetSearchCompletionsByAlias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <soap:operation soapAction="http://who/GetSearchAddinCompletions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PeopleStoreSoap12" type="tns:PeopleStoreSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindPeopleByQuery">
+      <soap12:operation soapAction="http://who/FindPeopleByQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <soap12:operation soapAction="http://who/FindPeopleByFuzzy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <soap12:operation soapAction="http://who/FindPersonByAlias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <soap12:operation soapAction="http://who/FindPeopleByAlias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <soap12:operation soapAction="http://who/FindPeopleByEmployeeId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <soap12:operation soapAction="http://who/FindPersonContextWithPeers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <soap12:operation soapAction="http://who/FindPersonContextByAlias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <soap12:operation soapAction="http://who/GetTagCompletions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <soap12:operation soapAction="http://who/GetUnder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <soap12:operation soapAction="http://who/GetSearchCompletions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <soap12:operation soapAction="http://who/GetSearchCompletionsByAlias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <soap12:operation soapAction="http://who/GetSearchAddinCompletions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PeopleStoreHttpGet" type="tns:PeopleStoreHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="FindPeopleByQuery">
+      <http:operation location="/FindPeopleByQuery" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <http:operation location="/FindPeopleByFuzzy" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <http:operation location="/FindPersonByAlias" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <http:operation location="/FindPeopleByAlias" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <http:operation location="/FindPeopleByEmployeeId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <http:operation location="/FindPersonContextWithPeers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <http:operation location="/FindPersonContextByAlias" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <http:operation location="/GetTagCompletions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <http:operation location="/GetUnder" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <http:operation location="/GetSearchCompletions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <http:operation location="/GetSearchCompletionsByAlias" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <http:operation location="/GetSearchAddinCompletions" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PeopleStoreHttpPost" type="tns:PeopleStoreHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="FindPeopleByQuery">
+      <http:operation location="/FindPeopleByQuery" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByFuzzy">
+      <http:operation location="/FindPeopleByFuzzy" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonByAlias">
+      <http:operation location="/FindPersonByAlias" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByAlias">
+      <http:operation location="/FindPeopleByAlias" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPeopleByEmployeeId">
+      <http:operation location="/FindPeopleByEmployeeId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextWithPeers">
+      <http:operation location="/FindPersonContextWithPeers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonContextByAlias">
+      <http:operation location="/FindPersonContextByAlias" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagCompletions">
+      <http:operation location="/GetTagCompletions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnder">
+      <http:operation location="/GetUnder" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletions">
+      <http:operation location="/GetSearchCompletions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCompletionsByAlias">
+      <http:operation location="/GetSearchCompletionsByAlias" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchAddinCompletions">
+      <http:operation location="/GetSearchAddinCompletions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PeopleStore">
+    <wsdl:port name="PeopleStoreSoap" binding="tns:PeopleStoreSoap">
+      <soap:address location="http://who/PeopleStore.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PeopleStoreSoap12" binding="tns:PeopleStoreSoap12">
+      <soap12:address location="http://who/PeopleStore.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PeopleStoreHttpGet" binding="tns:PeopleStoreHttpGet">
+      <http:address location="http://who/PeopleStore.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PeopleStoreHttpPost" binding="tns:PeopleStoreHttpPost">
+      <http:address location="http://who/PeopleStore.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
